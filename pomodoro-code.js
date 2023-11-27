@@ -1,6 +1,9 @@
 const btn = document.getElementById("time-butn");
 const timeText = document.getElementById("time-display");
 const resetBtn = document.getElementById("reset-butn");
+const audioA = document.getElementById("activate");
+const audioD = document.getElementById("deactivate");
+const audioS = document.getElementById("stop");
 var tbs = 0;
 var tbm = 0;
 var tbmr = 0;
@@ -41,9 +44,11 @@ function timeHandle(){
                     tbm = tbmrv;
                     tbs = 0;
                     tbms = 0;
+                    audioD.play();
                 } else {
                     isRest = false;
                     document.getElementById("display").style.backgroundColor = "red";
+                    
                     tbm = tbmv;
                     tbs = 0;
                     tbms = 0;
@@ -55,7 +60,10 @@ function timeHandle(){
                         btn.innerHTML = "Bắt đầu";
                         document.getElementById("display").style.backgroundColor = "white";
                         timeText.innerHTML = "00:00";
+                        audioS.play();
+                        return ;
                     }
+                    audioA.play();
                 }
                 
             }
@@ -94,6 +102,7 @@ function starts(){
 
             return ;
         }
+        audioA.play();
         btn.innerHTML = "Dừng lại";
         isStart = true;
         isRest = false;
